@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
-    #region Public Variables
-
-    #endregion
-
     #region Private Variables
     private Enemy ThisEnemy;
     private Transform Bar;
@@ -26,12 +22,22 @@ public class HealthBar : MonoBehaviour {
         CurrHealth = MaxHealth;
         HealthPercent = CurrHealth / MaxHealth;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        //check for damage and adjust health... probably on collision
 
-        HealthPercent = CurrHealth/MaxHealth;
+#endregion
+
+#region Utility Methods
+
+    public void TakeDamage(int damage)
+    {
+        CurrHealth -= damage;
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        //check for damage and adjust health
+
+        HealthPercent = CurrHealth / MaxHealth;
 
         if (HealthPercent > 0)
         {
@@ -41,16 +47,6 @@ public class HealthBar : MonoBehaviour {
         {
             DestroyEnemy();
         }
-
-	}
-
-#endregion
-
-#region Utility Methods
-
-    public void TakeDamage(int damage)
-    {
-        CurrHealth -= damage;
     }
 
     public void DestroyEnemy()

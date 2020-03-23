@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour {
 
     #region Public Variables
-    public Transform EnemyPath;
     public bool PlayerIsTakingDamage;
     #endregion
 
@@ -16,7 +15,6 @@ public class Game : MonoBehaviour {
     private float playerHealth;
 
     private UIHandler uiHandler;
-    private Spawn spawnScript;
     private List<Spawn> spawns;
 
     private int enemiesLeft;
@@ -31,7 +29,6 @@ public class Game : MonoBehaviour {
         currency = 100;
         playerHealth = 5;
         uiHandler = GameObject.Find("UI").GetComponent<UIHandler>();
-        spawnScript = GameObject.Find("tile_spawn").GetComponent<Spawn>();
 
         spawns = new List<Spawn>();
         currScene = SceneManager.GetActiveScene().buildIndex;
@@ -99,7 +96,7 @@ public class Game : MonoBehaviour {
         return currency;
     }
 
-    public int GetWave()
+    public int GetWave() 
     {
         return spawns[0].GetCurrentWave();
     }
@@ -149,8 +146,7 @@ public class Game : MonoBehaviour {
 
         if (enemiesLeft == 0 && playerHealth >= 1)
         {
-            //this should spawn another wave or load the next level
-            if (spawnScript.CheckForNextWave())
+            if (spawns[0].CheckForNextWave())
             {
                 uiHandler.EnableSpawnButton();
                 uiHandler.DisplayPlayerInfo();
@@ -185,11 +181,6 @@ public class Game : MonoBehaviour {
     private void YouLose()
     {
         uiHandler.EnableLoserPanel();        
-    }
-
-    public Transform GetPath()
-    {
-        return EnemyPath;
     }
 
 #endregion

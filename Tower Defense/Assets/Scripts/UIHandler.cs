@@ -10,7 +10,6 @@ public class UIHandler : MonoBehaviour {
     #region Public Variables
 
     public static bool isPaused = false;
-    
 
     public GameObject[] towerOptions = new GameObject[3];
 
@@ -19,12 +18,15 @@ public class UIHandler : MonoBehaviour {
     #region Private Variables
     private Camera mainCam;
     [SerializeField] private Game gameScript;
+
+    //tower purchase/drag and drop variables
     private GameObject selectedTower; 
     private bool beingDragged = false;
     private Transform towerBeingDragged = null;
     private Tower towerScriptDisplayingInfo;
     private bool isPlaceable;
     private Transform tile;
+
     private bool startMenuActive = true;
 
     //text variables

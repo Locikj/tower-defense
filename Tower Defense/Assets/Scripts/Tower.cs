@@ -7,12 +7,14 @@ using UnityEngine.EventSystems;
 public class Tower : MonoBehaviour {
 
     #region Public Variables
+    //base tower attributes
     public string towerName;
     public int cost;
     public int damage;
     public float attackSpeed;
     public int range;
-
+    
+    //upgrade variables
     public int upgradeCost;
     public int increaseUpgradeCost;
     [Range(0,1)]public float damageUpgrade;
